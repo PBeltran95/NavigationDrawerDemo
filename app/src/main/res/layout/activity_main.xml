@@ -5,17 +5,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment_container_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:navGraph="@navigation/nav_graph"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"/>
+        android:layout_height="match_parent">
+
+
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:visibility="visible"
+        app:title="hola"
+        app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:titleTextColor="@color/white"
+        style="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+        android:theme="?attr/actionBarStyle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:navGraph="@navigation/nav_graph"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            app:defaultNavHost="true"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
@@ -23,6 +57,7 @@
         android:layout_height="match_parent"
         app:menu="@menu/navigation_menu"
         app:headerLayout="@layout/header"
+        android:fitsSystemWindows="true"
         android:layout_gravity="start">
 
     </com.google.android.material.navigation.NavigationView>
